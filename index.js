@@ -195,3 +195,6 @@ function loadData(){
     //Skal kunne loade data fra både arrays og fra local data
     //Se: https://stackoverflow.com/a/2010948
 }
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true})
