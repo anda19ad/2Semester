@@ -1,4 +1,4 @@
-//Lavet af FH
+/*  //Lavet af FH
 class Kalender {
     constructor(){
 
@@ -201,3 +201,5 @@ mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true})
 
 
 //hej
+
+*/
