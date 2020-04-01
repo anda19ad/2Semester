@@ -1,4 +1,4 @@
-//Lavet af FH
+/* //Lavet af FH
 function getGemtRevisorHus() {
     var gemteRevisore = [];
     var gemtRevisorhus = JSON.parse(localStorage.getItem('gemtRevisorhus'));
@@ -96,3 +96,6 @@ function formaterRevisor(r) {
     //Returner revisorerne som array
     return returnRevisore;
 }
+
+
+ */
