@@ -144,7 +144,7 @@ function kontrolInfo() {
 
 /* Lavet af FH
 Herunder bliver den indtastet data gemt i local storage og tilføjet til class revisorhus og ind i databehandling filen.
- På denne måde bliver det muligt at anvende revisoren på tværs af html og JS filer. */
+ På denne måde bliver det muligt at anvende revisoren på tværs af html og JS filer.
 
     function saveToDB(){
 
@@ -158,5 +158,6 @@ Herunder bliver den indtastet data gemt i local storage og tilføjet til class r
             localStorage.setItem('gemtRevisorhus', JSON.stringify(gemtRevisorhus));
         }
     }
+    */
 
 }
