@@ -17,6 +17,7 @@
   "homepage": "https://github.com/anda19ad/2Semester#readme",
   "description": "",
   "dependencies": {
+    "ejs": "^3.0.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
