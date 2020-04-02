@@ -17,7 +17,7 @@ const revisorSchema = new Schema({
 });
 
 if(!mongoose.connection.models['revisor'])
-    revisor = mongoose.model("revisor", BlogPostSchema);
-module.exports = BlogPost;
+    revisor = mongoose.model("revisor", revisorSchema);
+module.exports = revisor;
 
 //test

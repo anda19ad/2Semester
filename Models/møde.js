@@ -13,5 +13,5 @@ const mødeSchema = new Schema({
 });
 
 if(!mongoose.connection.models['møde'])
-    møde = mongoose.model("møde", BlogPostSchema);
-module.exports = BlogPost;
+    møde = mongoose.model("møde", mødeSchema);
+module.exports = møde;
