@@ -15,7 +15,6 @@
     "url": "https://github.com/anda19ad/2Semester/issues"
   },
   "homepage": "https://github.com/anda19ad/2Semester#readme",
-  "description": "",
   "dependencies": {
     "ejs": "^3.0.2",
     "express": "^4.17.1",
@@ -23,5 +22,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "description": ""
 }
