@@ -6,7 +6,7 @@ var roid = sessionStorage.getItem('loggedInRevisorId');
 var ro = new Array( JSON.parse (sessionStorage.getItem('loggedInRevisorObject')) );
 
 if (roid == null || ro == null) {
-    location.href = "Login.html";
+    location.href = "Login.ejs";
 }
 
 ro = formaterRevisor(ro)[0];
@@ -136,7 +136,7 @@ function sletMøde(id) {
 function logAf(){
     sessionStorage.removeItem('loggedInRevisorObject');
     sessionStorage.removeItem('loggedInRevisorId');
-    window.location.href = 'Login.html';
+    window.location.href = 'Login.ejs';
 }
 
 //Lavet af FH

@@ -137,7 +137,7 @@ function kontrolInfo() {
         if(inputCorrect) {
             saveToDB();
             alert("Revisor oprettet");
-            location.replace("revisorLoginside.html")
+            location.replace("revisorLoginside.ejs")
         }
 
     }
