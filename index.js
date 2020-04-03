@@ -17,7 +17,7 @@ app.get('/opretrevisor',opretRevisorController);
 app.get('/revisorprofil',revisorProfilController);
 
 app.use(express.static('public'));
-app.set('view engine','ejs');
+app.set('view engine','ejs'); //Sætter EJS som templating engine
 
 
 app.listen(2000, ()=>{
