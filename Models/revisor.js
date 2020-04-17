@@ -4,20 +4,18 @@ const Schema = mongoose.Schema;
 
 //Definerer modellen. Datastrukturen.
 const revisorSchema = new Schema({
-    fornavn:String,
-    efternavn:String,
-    email:String,
-    tlf:String,
+    Fornavn:String,
+    Efternavn:String,
+    Email:String,
+    Tlf:Number,
     startTime:Number,
     slutTime:Number,
     startMinut:Number,
     slutMinut:Number,
-    brugernavn:String,
-    kodeord:String,
+    Brugernavn:String,
+    Kodeord:String
 });
 
-if(!mongoose.connection.models['revisor'])
-    revisor = mongoose.model("revisor", revisorSchema);
-module.exports = revisor;
-
-//test
+//Gør det muligt at gemme revisorer s. 95
+const Revisor = mongoose.model('Revisor',revisorSchema);
+module.exports = Revisor;

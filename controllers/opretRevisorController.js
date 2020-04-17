@@ -1,3 +1,3 @@
 module.exports=(req,res)=>{
-    res.render('opretRevisor')
+    res.render('opretRevisor') //Henter opretRevisor.ejs
 }
