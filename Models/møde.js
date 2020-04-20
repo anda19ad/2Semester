@@ -16,6 +16,6 @@ const moedeSchema = new Schema({
 /*
 if(!mongoose.connection.models['møde'])
  */
-  const  moede = mongoose.model("møde", moedeSchema);
+  const moede = mongoose.model("moede", moedeSchema);
 module.exports = moede;
 
