@@ -28,8 +28,8 @@ app.get('/login',LoginController);
 app.get('/auth/opretRevisor',opretRevisorController);
 app.get('/revisorprofil',revisorProfilController);
 app.post('/afdelinger/revisor',gemRevisor); //Her bliver det defineret hvor det indtastede skal postes til. '/Models/revisor' bliver brugt i form action i opretRevisor.ejs
-app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til oe, da det lavede fejl.
-app.get('/revisorprofil',getMoede);
+app.post('/revisor/møde',gemMoede); // her gemmes møde - vi har lavet ø til oe, da det lavede fejl.
+app.get('/revisorprofil/:id',getMoede);
 
 
 
