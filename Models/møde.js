@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //Definerer modellen. Datastrukturen.
-const mødeSchema = new Schema({
+const moedeSchema = new Schema({
     kundenavn:String,
     kommentar:String,
     email:String,
@@ -15,8 +15,7 @@ const mødeSchema = new Schema({
 
 /*
 if(!mongoose.connection.models['møde'])
-
  */
-  const  møde = mongoose.model("møde", mødeSchema);
-module.exports = møde;
+  const  moede = mongoose.model("møde", moedeSchema);
+module.exports = moede;
 
