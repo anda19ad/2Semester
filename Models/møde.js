@@ -8,10 +8,15 @@ const mødeSchema = new Schema({
     kommentar:String,
     email:String,
     tlf:String,
+    moedeType: String,
     startTime:Number,
     slutTime:Number,
 });
 
+/*
 if(!mongoose.connection.models['møde'])
-    møde = mongoose.model("møde", mødeSchema);
+
+ */
+  const  møde = mongoose.model("møde", mødeSchema);
 module.exports = møde;
+

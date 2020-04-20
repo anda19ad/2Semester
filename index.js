@@ -11,6 +11,7 @@ const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController');
 const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anvendes til at gemme data i databasen, bliver hentet her
+const gemMøde = require ('./controllers/gemMøde');
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ app.get('/login',LoginController);
 app.get('/auth/opretRevisor',opretRevisorController);
 app.get('/revisorprofil',revisorProfilController);
 app.post('/afdelinger/revisor',gemRevisor); //Her bliver det defineret hvor det indtastede skal postes til. '/Models/revisor' bliver brugt i form action i opretRevisor.ejs
+app.post('/revisor/møde', gemMøde); // her gemmes møde
 
 app.use(express.static('public'));
 app.set('view engine','ejs'); //Sætter EJS som templating engine

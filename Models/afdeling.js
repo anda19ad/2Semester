@@ -14,6 +14,8 @@ const afdeling2 = new classAfdeling('Årsregnskab');
 const afdeling3 = new classAfdeling('Bogføring');
 
 
+/*
+
 const afdelingSchema = new Schema({
     afdelingNavn: String,
     revisorid: Array
@@ -21,3 +23,7 @@ const afdelingSchema = new Schema({
 
 const afdeling = mongoose.model('afdeling',afdelingSchema);
 module.exports = afdeling;
+
+
+
+ */
