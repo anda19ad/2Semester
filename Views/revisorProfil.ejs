@@ -13,6 +13,15 @@
 <div class="navn" id="revisorNavn"></div>
 <button id="logUd" onclick="logAf()">Log af</button>
 <h2>Oversigt over møder:</h2>
+<% for (var i=0; i< moedes.length; i++) { %>
+    <%= moedes[i].kundenavn%><br>
+    <%= moedes[i].email%><br>
+    <%= moedes[i].tlf%><br>
+    <%= moedes[i].moedeType%><br>
+    <%= moedes[i].startTime%><br>
+    <%= moedes[i].slutTime%><br>
+
+    <% } %>
 
 <br>
     <select id="dag">
