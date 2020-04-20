@@ -5,6 +5,8 @@ const mongoose = require('mongoose'); //For at kunne forbinde til databasen skal
 const bodyParser = require('body-parser'); // For at kunne lave middleware
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
+
+
 //henter controller filerne
 const indexController = require('./controllers/indexController');
 const LoginController = require('./controllers/LoginController');
@@ -18,6 +20,9 @@ const getMoede = require ('./controllers/getMoede.JS');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static('public'));
+app.set('view engine','ejs'); //Sætter EJS som templating engine
+
 app.get('/',indexController);
 app.get('/login',LoginController);
 app.get('/auth/opretRevisor',opretRevisorController);
@@ -27,8 +32,6 @@ app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til o
 app.get('/revisorprofil',getMoede);
 
 
-app.use(express.static('public'));
-app.set('view engine','ejs'); //Sætter EJS som templating engine
 
 
 app.listen(2000, ()=>{
