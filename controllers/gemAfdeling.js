@@ -5,15 +5,26 @@ const mongoose = require('mongoose');
 var db = mongoose.connection;
 
 
-
 module.exports = (req,res)=>{
     Afdeling.save(req.body,(error,afdeling) => {
         console.log(req.body, error, afdeling);
         res.redirect('/')
     })
-
-
 };
+
+
+mongoose.connection.db.collection('Afdeling').count(function (err, count) {
+    console.dir(err);
+    console.dir(count);
+
+    if(count == 0) {
+
+    }
+
+});
+
+
+
 
 
 
