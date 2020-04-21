@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 //formålet med filen er, at gemme og foruddefinere afdelingerne i databasen. inspiraton fundet på: https://www.tutorialkart.com/nodejs/mongoose/insert-document-to-mongodb/
 var db = mongoose.connection;
 
+//schema for afdelinger
 const afdelingSchema = new Schema({
     afdelingNavn: {
         type:String,
@@ -11,19 +12,27 @@ const afdelingSchema = new Schema({
     }
 });
 
+/*
 
-// angiver afdeling modellen således vi kan oprette individuelle afdelinger
+HER SKAL VI LAVE EN FUNKTION DER TJEKKER OM COLLECTION ER OPRETTET OG HVIS IKKE SKAL DEN OPRETTES.
+
+function findAfdeling() {
+    db.collection.findOne('Afdeling')
+}
+console.log(findAfdeling());
+
+if (findAfdeling() == null) {
+
+}*/
+
+// opretter collectionen Afdeling.
 const Afdeling = mongoose.model('AfdelingNavn', afdelingSchema, 'Afdeling');
 
 
+// når programmet startes første gang, skal der oprettes documents til collectionen Afdeling.
+// Dette udføres af funktionen opretAfdelinger().
+
 function opretAfdelinger() {
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function() {
-    console.log("Connection Successful!");
-
-
 
 //individuelle afdelinger/documents oprettes
 var Afdeling1 = new Afdeling( {afdelingNavn: 'Årsregnskab'} );
@@ -42,10 +51,10 @@ var Afdeling2 = new Afdeling( { afdelingNavn: 'Skat og moms'} );
         if (err) return console.error(err);
         console.log(afdeling.afdelingNavn + " er oprettet");
     });
- });
-
 };
 
+// her oprettes en function der ved brug af .count metoden, tæller antallet af documents i vores collection 'Afdeling'.
+//inspiration til denne, fundet på : https://stackoverflow.com/questions/26720050/how-to-count-the-number-of-documents-in-a-mongodb-collection
 
 function afdelingAntal() {
     let antal = db.collection('Afdeling');
@@ -54,31 +63,11 @@ function afdelingAntal() {
     });
 };
 
+//nedenstående er et if/else statement,der vurderer om collectionen er tom. Hvis den er tom, køres opretAfdelinger().
+//denne statement er essentiel ved opstart af programmet.
+
 if (afdelingAntal() == null) {
     opretAfdelinger()
-
 } else {
     console.log('Afdelingerne er oprettet')
 };
-
-/*
-
-const Afdeling1 = mongoose.model('Årsregnskab', afdelingSchema, 'Afdeling');
-const Afdeling2 = mongoose.model('Skat og moms', afdelingSchema, 'Afdeling');
-const afdelinger = [Afdeling1,Afdeling2]
-
-module.exports = afdelinger;
-
-console.log(afdelinger);
-
- */
-
-
-/*
-mongoose.model('Årsregnskab', afdelingSchema, 'Afdeling'),
-    mongoose.model('Skat og Moms', afdelingSchema, 'Afdeling') ]
-
-db.afdelinger.save({afdelingNavn: Årsregnskab});
-
-
- */
