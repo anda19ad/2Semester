@@ -4,12 +4,6 @@ const Schema = mongoose.Schema;
 //formålet med filen er, at gemme og foruddefinere afdelingerne i databasen. inspiraton fundet på: https://www.tutorialkart.com/nodejs/mongoose/insert-document-to-mongodb/
 var db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function() {
-    console.log("Connection Successful!");
-
-
 const afdelingSchema = new Schema({
     afdelingNavn: {
         type:String,
@@ -19,12 +13,22 @@ const afdelingSchema = new Schema({
 
 
 // angiver afdeling modellen således vi kan oprette individuelle afdelinger
-var Afdeling = mongoose.model('AfdelingNavn', afdelingSchema, 'Afdeling');
+const Afdeling = mongoose.model('AfdelingNavn', afdelingSchema, 'Afdeling');
+
+
+function opretAfdelinger() {
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function() {
+    console.log("Connection Successful!");
+
 
 
 //individuelle afdelinger/documents oprettes
 var Afdeling1 = new Afdeling( {afdelingNavn: 'Årsregnskab'} );
 var Afdeling2 = new Afdeling( { afdelingNavn: 'Skat og moms'} );
+
 
 //her gemmes documents til db vha. .save
 
@@ -33,17 +37,29 @@ var Afdeling2 = new Afdeling( { afdelingNavn: 'Skat og moms'} );
         console.log(afdeling.afdelingNavn + " er oprettet");
     });
 
+
     Afdeling2.save(function (err, afdeling) {
         if (err) return console.error(err);
         console.log(afdeling.afdelingNavn + " er oprettet");
     });
-});
+ });
+
+};
 
 
+function afdelingAntal() {
+    let antal = db.collection('Afdeling');
+    antal.count().then((count) => {
+        console.log(count);
+    });
+};
 
+if (afdelingAntal() == null) {
+    opretAfdelinger()
 
-
-
+} else {
+    console.log('Afdelingerne er oprettet')
+};
 
 /*
 
