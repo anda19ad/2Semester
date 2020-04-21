@@ -13,8 +13,9 @@ const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController');
 const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anvendes til at gemme data i databasen, bliver hentet her
+const getMoede = require('./controllers/getMoede');
 const gemMoede = require ('./controllers/gemMøde');
-const getMoede = require ('./controllers/getMoede.JS');
+
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
 app.use(bodyParser.json());
@@ -36,4 +37,4 @@ app.get('/revisorprofil/:id',getMoede);
 
 app.listen(2000, ()=>{
     console.log('Klar til at booke møder')
-})
+});
