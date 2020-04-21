@@ -1,29 +1,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Hardcoder de forskellige afdelinger som virksomheden består af
-class classAfdeling{
-    constructor(afdelingNavn, revisorer) {
-        this.afdeling = afdelingNavn;
-        this.revisorer = revisorer;
-    }
-}
-
-const afdeling1 = new classAfdeling ('Skat');
-const afdeling2 = new classAfdeling('Årsregnskab');
-const afdeling3 = new classAfdeling('Bogføring');
-
-
-/*
 
 const afdelingSchema = new Schema({
     afdelingNavn: String,
-    revisorid: Array
 });
 
-const afdeling = mongoose.model('afdeling',afdelingSchema);
-module.exports = afdeling;
+const Afdeling1 = mongoose.model('Årsregnskab', afdelingSchema, 'Afdeling');
+const Afdeling2 = mongoose.model('Skat og moms', afdelingSchema, 'Afdeling');
+const afdelinger = [Afdeling1,Afdeling2]
 
+module.exports = afdelinger;
+
+console.log(afdelinger);
+
+
+/*
+mongoose.model('Årsregnskab', afdelingSchema, 'Afdeling'),
+    mongoose.model('Skat og Moms', afdelingSchema, 'Afdeling') ]
+
+db.afdelinger.save({afdelingNavn: Årsregnskab});
 
 
  */
