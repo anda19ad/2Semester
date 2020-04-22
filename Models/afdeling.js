@@ -13,6 +13,7 @@ const afdelingSchema = new Schema({
 });
 
 /*
+//fang error, catch eller consol
 
 HER SKAL VI LAVE EN FUNKTION DER TJEKKER OM COLLECTION ER OPRETTET OG HVIS IKKE SKAL DEN OPRETTES.
 
@@ -25,8 +26,9 @@ if (findAfdeling() == null) {
 
 }*/
 
+
 // opretter collectionen Afdeling.
-const Afdeling = mongoose.model('Afdeling', afdelingSchema, 'afdelings');
+const Afdeling = mongoose.model('Afdeling', afdelingSchema);
 
 
 // når programmet startes første gang, skal der oprettes documents til collectionen Afdeling.
