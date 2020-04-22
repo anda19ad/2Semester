@@ -22,7 +22,7 @@ function checkLogin(e) {
             sessionStorage.setItem("loggedInRevisorObject", JSON.stringify(revisorer[i]));
             sessionStorage.setItem("loggedInRevisorId", i);
 
-            location.href = "revisorLoginside.html";
+            location.href = "revisorProfil.ejs";
             break;
         }
     }

@@ -1,203 +1,37 @@
-//Lavet af FH
-class Kalender {
-    constructor(){
+const express = require('express'); //Henter express
+const app = new express(); // kalder den app, for at gøre det nemmere at bruge senere
+const ejs = require('ejs'); //Anvender ejs engine
+const mongoose = require('mongoose'); //For at kunne forbinde til databasen skal mongoose hentes
+const bodyParser = require('body-parser'); // For at kunne lave middleware
+mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
-    }
+//henter controller filerne
+const {Afdeling, Revisor} = require('./controllers/indexController'); //Henter to moduler, ved hjælp af tuborgklammer
+const LoginController = require('./controllers/LoginController');
+const opretRevisorController = require('./controllers/opretRevisorController');
+const revisorProfilController = require('./controllers/revisorProfilController');
+const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anvendes til at gemme data i databasen, bliver hentet her
+const gemMoede = require ('./controllers/gemMøde');
+const gemAfdeling = require('./controllers/gemAfdeling');
 
-    //Load tidspunkter og formater kalender for en måned
-    loadMonth(){dage
-
-    }
-
-    //Updates the DOM when meetings are changed
-    updateMonth(){
-
-    }
-
-}
-
-class Revisorhus {
-    constructor(revisorhusNavn){
-        this.revisorhusNavn = revisorhusNavn;
-        this.revisore = [];
-    }
+//Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('public'));
+app.set('view engine','ejs'); //Sætter EJS som templating engine
 
 
-    //Becuase objects are mutable in JS, we can simply add a Revisor object to the
-    //Revisorhus and in that way, a change at the revisor level (or Meeting level) will result in
-    //the same change on the Revisorhus level
-    addRevisor(navn) {
-        //Tag et objekt som argument, og gem tider osv. i dette objekt
-        //Ved at gemme i et objekt, kan vi lave ændringer i objektet, og
-        //på den måde, nemt lave ændringer
+app.listen(2000, ()=>{
+    console.log('Klar til at booke møder')
+})
 
-        this.revisore.push(navn);
-    }
-    printInfo(){
-        console.log("Revisorhusinfo\nNavn: " + this.revisorhusNavn + "\nIndeholdere revisore: ");
-        for(var i=0; i<this.revisore.length; i++){
-            this.revisore[i].printInfo();
-        }
-    }
-
-    //Create new revisor and add it to this revisorhus
-    newRevisor(){
-
-    }
-
-    //Create new meeting and assign to a revisor
-    newMeeting(revisor, start, slut){
-
-    }
-
-}
-
-class Revisor {
-    constructor (navn) {
-        this.revisorNavn = navn;
-        this.meetings = [];
-    }
-    addMeeting (m) {
-        console.log(this.meetings);
-        this.meetings.push(m);
-
-        //TODO:
-        //Gem mødet i local storage
-    }
-    printInfo(){
-        console.log("Revisorinfo\nNavn: " + this.revisorNavn + "\nMeetings:");
-        for (var i=0; i<this.meetings.length; i++){
-            console.log("Meeting number " + i + " starts at: " + this.meetings[i].startTime + " and end at: " + this.meetings[i].endTime);
-        }
-    }
-}
+app.get('/',Afdeling,Revisor); //Det er kun den ene som bliver gettet. Vi skal have lavet en "double" getter.
+app.get('/login',LoginController);
+app.get('/auth/opretRevisor',opretRevisorController);
+app.get('/revisorprofil',revisorProfilController);
+app.post('/afdelinger/revisor',gemRevisor); //Her bliver det defineret hvor det indtastede skal postes til. '/Models/revisor' bliver brugt i form action i opretRevisor.ejs
+app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til oe, da det lavede fejl.
+app.post('/afdeling', gemAfdeling);
 
 
 
-class Møde {
-    constructor (start, slut, kommentar, kundenavn){
-        this.startTime = start;
-        this.endTime = slut;
-        this.kundenavn = kundenavn;
-        this.kommentar = kommentar;
-
-    }
-
-    printTime(){
-        console.log(' Mødet starter: ' + this.startTime + ' og slutter: ' + this.endTime);
-    }
-
-
-    mødeLængde(){
-        return (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
-    }
-
-
-    printMødeLængde(){
-        //kilde: https://stackoverflow.com/questions/13894632/get-time-difference-between-two-dates-in-seconds
-
-        //getTime() afleverer tiden i millisekunder. Derfor må vi gange med 1000
-        //1000 (ms) * 60 (sekunder) * 60 (minutter) for at få tiden i timer
-        var differenceInHours = (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
-        console.log('Mødet varer: ' + differenceInHours + ' timer');
-    }
-
-    //Inspiration: https://stackoverflow.com/a/11796776
-    changeMeeting(args) {
-
-    }
-}
-var today = new Date();
-
-var start = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0, 0, 0);
-var slut = new Date(start.getTime() + 60 * 60 * 1000);
-var møde1 = new Møde(start, slut);
-møde1.printTime();
-
-console.log(møde1.mødeLængde());
-
-// dette for at gøre brugeren opmærksom på den tid der er til rådighed
-if (møde1.mødeLængde() <= 0.5){
-    console.log('30 minutter');
-}
-else {
-    console.log('1 time');
-}
-
-class langMøde extends Møde {
-    constructor(start) {
-        //langMøde varer 1 time
-
-        var slut = new Date(start.getTime() + 60 * 60 * 1000);
-        super(start, slut);
-    }
-}
-møde1 = new langMøde(start);
-
-
-class kortMøde extends Møde {
-    constructor(start) {
-        //kort møde varer 30 minutter eller 1/2 time
-
-        var slut = new Date(start.getTime() + 30 * 60 * 1000);
-        super(start, slut);
-    }
-}
-møde2 = new kortMøde(start);
-
-
-class User {
-    //Vi skal have navn (og evt. firmanavn) gemt
-    constructor(){
-
-    }
-
-    //Ændr en aftale som er knyttet til brugeren
-    editAppointment(m){
-
-    }
-
-}
-
-
-
-
-
-var today = new Date();
-
-var start = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0, 0, 0);
-var slut = new Date(start.getTime() + 60 * 60 * 1000);
-
-meeting1 = new Meeting(start, slut);
-
-
-var startMoms = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 15, 0, 0, 0);
-moms = new MomsRegnskab(startMoms);
-
-
-//Lave revisor
-peter = new Revisor("Peter");
-peter.addMeeting(moms);
-peter.addMeeting(meeting1);
-//peter.printInfo();
-
-//Lav revisorhus
-revisorCentralen = new Revisorhus('Revisorcentralen');
-revisorCentralen.addRevisor(peter);
-revisorCentralen.printInfo();
-
-//peter.revisorNavn = 'John';
-//revisorCentralen.printInfo();
-
-
-function loadData(){
-    //TODO
-    //Skal kunne loade data fra både arrays og fra local data
-    //Se: https://stackoverflow.com/a/2010948
-}
-
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true})
-
-
-//hej

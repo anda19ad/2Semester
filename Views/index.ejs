@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Projekt 0</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
 </head>
+<%- include('layouts/navbar');-%>
 <body>
 
-<div class="nav">
-    <ul class="navbar">
-        <li class="navList"><a class="navLista" href="index.html">Kalender</a></li>
-        <li class="navList"><a class="navLista" href="opretRevisor.html">Opret revisor</a></li>
-        <li class="navList"><a class="navLista" href="Login.html">Revisor login</a></li>
-    </ul>
-</div>
     <!-- For at kunne samle de to bokse, som udgør programmet.
     Mother er "mainContainer" og siblings er "optionContainer" og "calenderContainer" -->
     <div class="mainContainer">
@@ -22,7 +16,9 @@
                 <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
                 Vælg revisor: <br>
                 <select id="revisorOption">
-
+                    <% for (var i=0; i< afdelings.length; i++) { %>
+                    <option><%=afdelings[i].afdelingNavn%></option>
+                    <% } %>
                 </select><br><br>
                 Vælg mødelængde: <br>
                 <select id="mødeOption">
@@ -81,26 +77,27 @@
 
                 <div id="opretMødeContainer">
                     <h3>Indtast dine oplysninger</h3>
-                    <form id="opretMødeForm">
+                    <form id="opretMødeForm" action="/revisor/moede" method="POST">
                         <label for="kundenavn">Navn:</label><br>
                         <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
                         <span id="fejlKundenavn" class="fejlbesked"></span><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br>
+                        <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br>
                         <span id="fejlTlfnr" class="fejlbesked"></span><br><br>
 
                         <label for="mail">Mail:</label><br>
-                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br>
+                        <input type="email" name="email" id="mail" placeholder="E-mail"><br>
                         <span id="fejlEmail" class="fejlbesked"></span><br><br>
 
-                        <label for="mødetype">Møde type:</label><br>
-                        <select id="mødetype">
+                        <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
+                        <select id="mødetype" name="moedeType" >
                             <option selected disabled value="0">  Vælg  </option>
-                            <option value="1">Møde 1</option>
-                            <option value="2">Møde 2</option>
-                            <option value="3">Møde 3</option>
+                            <% for (var i=0; i< revisors.length; i++) { %>
+                            <option><%=revisors[i].Efternavn%></option>
+                            <% } %>
                         </select><br>
+
                         <span id="fejlMøde" class="fejlbesked"></span><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
@@ -113,20 +110,22 @@
             </div>
         </div>
     </div>
-
+<!--
     <script src="Kalender.js"></script>
-    <script src="Revisorhus.js"></script>
+    <script src="../Revisorhus.js"></script>
     <script src="Revisor.js"></script>
     <script src="Møde.js"></script>
-    <script src="databehandling.js"></script>
-    <script src="main.js"></script>
-    <script src="validation.js"></script>
-
+    <script src="../Trash/databehandling.js"></script>
+    <script src="../main.js"></script>
+    <script src="../validation.js"></script>
+-->
+<!--
     <script>
         document.getElementById("bookMødeSubmit").addEventListener("click", function(e){
             e.preventDefault();
             validereInfo();
         });
     </script>
+-->
 </body>
 </html>

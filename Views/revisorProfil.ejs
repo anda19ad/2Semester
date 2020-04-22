@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Revisor Login</title>
-    <link rel="stylesheet" type="text/css" href="revisorLoginside.css">
+    <link rel="stylesheet" type="text/css" href="../Public/revisorLoginside.css">
 </head>
+<%- include('layouts/navbar');-%>
 <body>
-<div class="nav">
-    <ul class="navbar">
-        <li class="navList"><a class="navLista" href="index.html">Kalender</a></li>
-        <li class="navList"><a class="navLista" href="opretRevisor.html">Opret revisor</a></li>
-        <li class="navList"><a class="navLista" href="Login.html">Revisor login</a></li>
-    </ul>
-</div>
-
 <div id="oversigt">
 <h1> Revisor Login </h1>
 
 <div class="navn" id="revisorNavn"></div>
-<button id="logUd" onclick="logAf()">Log af</button>
+<!-- <button id="logUd" onclick="logAf()">Log af</button> -->
 <h2>Oversigt over møder:</h2>
+<% for (var i=0; i< moedes.length; i++) { %>
+    <span ><%= moedes[i].kundenavn%><br>
+    <%= moedes[i].email%><br>
+    <%= moedes[i].tlf%><br>
+    <%= moedes[i].moedeType%><br>
+    <%= moedes[i].startTime%><br>
+    <%= moedes[i].slutTime%><br>
+    </span>
+    <% } %>
+
 
 <br>
     <select id="dag">
@@ -93,13 +96,13 @@
 <br>
 
 
-
-<script src="Revisorhus.js"></script>
+<!--
+<script src="../Revisorhus.js"></script>
 <script src="Revisor.js"></script>
 <script src="Møde.js"></script>
-<script src="databehandling.js"></script>
-<script src="revisorLoginside.js"></script>
-
+<script src="../Trash/databehandling.js"></script>
+<script src="../revisorLoginside.js"></script>
+-->
 
 
 </body>

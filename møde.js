@@ -71,6 +71,7 @@ class Møde {
 // super()
 // https://eloquentjavascript.net/Eloquent_JavaScript.pdf p.112
 
+/*
 class langMøde extends Møde {
     constructor(start, id, kommentar, kundenavn, tlfnr, mail) {
         //langMøde varer 1 time

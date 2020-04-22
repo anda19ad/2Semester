@@ -24,14 +24,14 @@ function validereInfo() {
         //Validerer navnet
         if (kundenavn == null || kundenavn == "") {
             // Tilføjer en besked
-            document.getElementById("fejlKundenavn").innerHTML = "Hov! Du har glemt at indtaste dit navn. <br/>"
+            document.getElementById("fejlKundenavn").innerHTML = "Venligst indtast dit navn <br/>"
             // sætter formen til false
             korrektInput = false;
         }
 
         //Validerer tlf.
         if (tlfnr == null || tlfnr <= 10000000 || tlfnr >= 1000000000) {
-            document.getElementById("fejlTlfnr").innerHTML = "Hov! Det indtastede telefonnummer er ikke korrekt <br/>";
+            document.getElementById("fejlTlfnr").innerHTML = "Venligst indtast et gyldigt tlf nr <br/>";
             korrektInput = false;
         }
 
@@ -40,13 +40,13 @@ function validereInfo() {
         var punktum = mail.indexOf(".");
 
         if (mail == null || mail == "" || snabelA < 1 || punktum < 2) {
-            document.getElementById("fejlEmail").innerHTML = "Hov! Den indtastede email er ikke korrekt. <br/>";
+            document.getElementById("fejlEmail").innerHTML = "Venligst indtast en gyldig e-mail <br/>";
             korrektInput = false;
         }
 
         //Validerer at mødetype er valgt
         if (mødetype == 0) {
-            document.getElementById("fejlMøde").innerHTML = "Husk at vælge en mødetype! <br/>";
+            document.getElementById("fejlMøde").innerHTML = "Venligst vælg en mødetype <br/>";
             korrektInput = false;
         }
 
@@ -56,7 +56,7 @@ function validereInfo() {
             k.refresh()
         }
 
-
+/*
         //Gem til local storage
         function gemtilLS() {
             //Sikrer igen at inputtet er korrekt
@@ -75,6 +75,6 @@ function validereInfo() {
             }
         }
 
-
+*/
     }
 }
