@@ -29,7 +29,6 @@ if (findAfdeling() == null) {
 // opretter collectionen Afdeling. try catch funktion.
 const Afdeling = mongoose.model('AfdelingNavn', afdelingSchema, 'Afdeling');
 
-
 // når programmet startes første gang, skal der oprettes documents til collectionen Afdeling.
 // Dette udføres af funktionen opretAfdelinger().
 
@@ -76,6 +75,6 @@ if (afdelingAntal() == null) {
 
 // funktion der henter afdeling på navn
 
-getAfdelingPåNavn
+//getAfdelingPåNavn
 
 //constaritn
