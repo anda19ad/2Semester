@@ -26,7 +26,7 @@ if (findAfdeling() == null) {
 }*/
 
 // opretter collectionen Afdeling.
-const Afdeling = mongoose.model('AfdelingNavn', afdelingSchema, 'Afdeling');
+const Afdeling = mongoose.model('Afdeling', afdelingSchema, 'afdelings');
 
 
 // når programmet startes første gang, skal der oprettes documents til collectionen Afdeling.
@@ -55,9 +55,8 @@ var Afdeling2 = new Afdeling( { afdelingNavn: 'Skat og moms'} );
 
 // her oprettes en function der ved brug af .count metoden, tæller antallet af documents i vores collection 'Afdeling'.
 //inspiration til denne, fundet på : https://stackoverflow.com/questions/26720050/how-to-count-the-number-of-documents-in-a-mongodb-collection
-
 function afdelingAntal() {
-    let antal = db.collection('Afdeling');
+    let antal = db.collection('afdelings');
     antal.count().then((count) => {
         console.log(count);
     });
@@ -71,3 +70,5 @@ if (afdelingAntal() == null) {
 } else {
     console.log('Afdelingerne er oprettet')
 };
+
+module.exports = Afdeling;

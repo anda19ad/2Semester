@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); 
 
 //henter controller filerne
 const indexController = require('./controllers/indexController');
+//const indexAfdelingController = require('./controllers/indexAfdelingController');
 const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController');
@@ -26,6 +27,7 @@ app.listen(2000, ()=>{
 })
 
 app.get('/',indexController);
+//app.get('/',indexAfdelingController);
 app.get('/login',LoginController);
 app.get('/auth/opretRevisor',opretRevisorController);
 app.get('/revisorprofil',revisorProfilController);

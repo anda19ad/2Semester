@@ -16,7 +16,9 @@
                 <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
                 Vælg revisor: <br>
                 <select id="revisorOption">
-
+                    <% for (var i=0; i< afdelings.length; i++) { %>
+                    <option><%=afdelings[i].afdelingNavn%></option>
+                    <% } %>
                 </select><br><br>
                 Vælg mødelængde: <br>
                 <select id="mødeOption">
@@ -88,12 +90,12 @@
                         <input type="email" name="email" id="mail" placeholder="E-mail"><br>
                         <span id="fejlEmail" class="fejlbesked"></span><br><br>
 
-                        <label for="mødetype">Møde type:</label><br>
+                        <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
                         <select id="mødetype" name="moedeType" >
                             <option selected disabled value="0">  Vælg  </option>
-                            <option value="1">Møde 1</option>
-                            <option value="2">Møde 2</option>
-                            <option value="3">Møde 3</option>
+                            <% for (var i=0; i< revisors.length; i++) { %>
+                            <option><%=revisors[i].Efternavn%></option>
+                            <% } %>
                         </select><br>
 
                         <span id="fejlMøde" class="fejlbesked"></span><br><br>
