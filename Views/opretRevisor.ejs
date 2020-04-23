@@ -36,9 +36,9 @@
 
                 <div class="opretRevisorinput">
                     <br/> <select name="Afdeling" id="Afdeling" >
-                        <option>-- Vælg afdeling --</option>
-                        <option>  </option>
-                        <option>Årsregnskab</option>
+                        <% for (var i=0; i< afdelings.length; i++) { %>
+                        <option><%=afdelings[i].afdelingNavn%></option>
+                        <% } %>
                     </select><br/>
                 </div>
                 <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
