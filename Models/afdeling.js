@@ -73,6 +73,4 @@ if (afdelingAntal() == null) {
     console.log('Afdelingerne er oprettet')
 };
 
-module.exports = () => {
-  return {Afdeling: true}
-};
+module.exports = Afdeling;

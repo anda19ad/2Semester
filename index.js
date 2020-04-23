@@ -6,7 +6,7 @@ const bodyParser = require('body-parser'); // For at kunne lave middleware
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
 //henter controller filerne
-const index = require('./controllers/indexController');//Henter to moduler, ved hjælp af tuborgklammer
+const index = require('./controllers/indexController').index;
 const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController');
