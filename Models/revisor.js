@@ -4,16 +4,37 @@ const Schema = mongoose.Schema;
 
 //Definerer modellen. Datastrukturen.
 const revisorSchema = new Schema({
-    Fornavn:String,
-    Efternavn:String,
-    Email:String,
-    Tlf:Number,
+    Fornavn: {
+        type: String,
+        required: true,
+    },
+    Efternavn: {
+        type: String,
+        required: true,
+    },
+    Email: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    Tlf: {
+        type: Number,
+        unique: true,
+        required: true,
+    },
     startTime:Number,
     slutTime:Number,
     startMinut:Number,
     slutMinut:Number,
-    Brugernavn:String,
-    Kodeord:String
+    Brugernavn: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    Kodeord: {
+        type: String,
+        required: true,
+    }
 });
 
 //Gør det muligt at gemme revisorer s. 95

@@ -40,12 +40,12 @@ function showErrorMessage() {
 
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
-    username: {
+    Brugernavn: {
         type: String,
         unique: true,
         required: true,
     },
-    password: {
+    Kodeord: {
         type: String,
         required: true,
     }
