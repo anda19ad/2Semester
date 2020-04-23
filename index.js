@@ -6,8 +6,7 @@ const bodyParser = require('body-parser'); // For at kunne lave middleware
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
 //henter controller filerne
-const Index = require('./controllers/indexController');
-//const Revisor = require('./controllers/indexController');//Henter to moduler, ved hjælp af tuborgklammer
+const index = require('./controllers/indexController');//Henter to moduler, ved hjælp af tuborgklammer
 const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController');
@@ -25,8 +24,7 @@ app.set('view engine','ejs'); //Sætter EJS som templating engine
 app.listen(2000, ()=>{
     console.log('Klar til at booke møder')
 })
-
-app.get('/', Index); //Det er kun den ene som bliver gettet. Vi skal have lavet en "double" getter.
+app.get('/', index);//Det er kun den ene som bliver gettet. Vi skal have lavet en "double" getter.
 app.get('/login',LoginController);
 app.get('/auth/opretRevisor',opretRevisorController);
 app.get('/revisorprofil',revisorProfilController);

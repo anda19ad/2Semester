@@ -39,4 +39,7 @@ const revisorSchema = new Schema({
 
 //Gør det muligt at gemme revisorer s. 95
 const Revisor = mongoose.model('Revisor',revisorSchema);
-module.exports = Revisor;
+
+module.exports = () => {
+    return {Revisor: true}
+};
