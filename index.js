@@ -14,6 +14,7 @@ const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anv
 const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');
 
+
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));

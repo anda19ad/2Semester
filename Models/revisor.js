@@ -1,6 +1,7 @@
 //De modeller som databasen består af, bliver defineret her
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt')
 
 //Definerer modellen. Datastrukturen.
 
@@ -38,6 +39,15 @@ const Schema = mongoose.Schema;
         }
     });
 
+
+revisorSchema.pre('save', function (next) {
+    const Brugernavn = this;
+
+    bcrypt.hash(Brugernavn.kodeord, 10, (error, hash) => {
+        Brugernavn.kodeord = hash;
+        next()
+    })
+});
 
 //Gør det muligt at gemme revisorer s. 95
 const Revisor = mongoose.model('Revisor',revisorSchema);

@@ -7,7 +7,7 @@ module.exports = async(req,res)=>{
     });
 };
 /*
-module.exports=(req,res)=>{
+module.exports = (req,res) =>{
     res.render('opretRevisor') //Henter opretRevisor.ejs
 }
 */
