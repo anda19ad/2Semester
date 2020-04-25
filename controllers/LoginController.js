@@ -1,3 +1,4 @@
-module.exports=(req,res)=>{
-    res.render('Login')
-}
+
+module.exports = (req,res)=>{
+    res.render('login')
+};
