@@ -7,6 +7,7 @@ module.exports=(req,res)=>{
         if (Revisor){
             bcrypt.compare(Kodeord, Revisor.Kodeord, (error, same)=>{
                 if(same){
+                    req.session.RevisorId = Revisor._id
                     res.redirect('revisorprofil')
                 }
                 else {

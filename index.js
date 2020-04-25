@@ -14,6 +14,7 @@ const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anv
 const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
+const expressSession = require('express-session');
 
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine','ejs'); //Sætter EJS som templating engine
+app.use(expressSession({secret: 'google'}));
 
 
 app.listen(2000, ()=>{
