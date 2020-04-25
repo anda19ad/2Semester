@@ -43,8 +43,8 @@ const bcrypt = require('bcrypt')
 revisorSchema.pre('save', function (next) {
     const Brugernavn = this;
 
-    bcrypt.hash(Brugernavn.kodeord, 10, (error, hash) => {
-        Brugernavn.kodeord = hash;
+    bcrypt.hash(Brugernavn.Kodeord, 10, (error, hash) => {
+        Brugernavn.Kodeord = hash;
         next()
     })
 });
