@@ -10,17 +10,17 @@
 
     <div id="loginContainer">
         <!-- <form id="loginForm" name="Revisor login" onsubmit="checkLogin()" method="get"> -->
-        <form id="loginForm" name="loginRevisor" onsubmit= href="revisorProfil" method="get">
+        <form action= "/loginRevisor" method="POST" id="loginForm" name="loginRevisor">
             <h2>Login</h2>
             <span id="loginMessage" class="fejlbesked"></span><br><br>
             <div class="tekstboks">
-            <input type="text" id="brugernavn" value="" placeholder=" Brugernavn"/><br/>
+            <input type="text" name="Brugernavn" id="brugernavn" value="" placeholder=" Brugernavn"/><br/>
             </div>
             <div class="tekstboks">
-            <input type="password" id="password" value="" placeholder=" Password"/><br/>
+            <input type="password" name="Kodeord" id="password" value="" placeholder=" Password"/><br/>
             </div><br>
             <br/>
-            <button id="submit" class="Login" style="cursor: pointer">Log ind</button><br><br>
+            <button type="submit" id="submit" class="Login" style="cursor: pointer">Log ind</button><br><br>
         <!-- opretter her en link til opret bruger side som bliver stylet som en knap -->
             <!-- <a href="opretRevisor.ejs" class="opretRevisorKnap">Opret</a> -->
 
