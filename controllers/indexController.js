@@ -1,6 +1,7 @@
 const Afdeling = require('../Models/afdeling');
 const Revisor = require ('../Models/revisor');
 
+//Der skal forklaring på hvorfor der bruges exports.index
 exports.index = async(req,res)=> {
     const afdelings = await Afdeling.find({});
     const revisors = await Revisor.find({});

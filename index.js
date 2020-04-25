@@ -3,6 +3,7 @@ const app = new express(); // kalder den app, for at gøre det nemmere at bruge 
 const ejs = require('ejs'); //Anvender ejs engine
 const mongoose = require('mongoose'); //For at kunne forbinde til databasen skal mongoose hentes
 const bodyParser = require('body-parser'); // For at kunne lave middleware
+const expressSession = require('express-session');
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
 //henter controller filerne
@@ -14,7 +15,6 @@ const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anv
 const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
-const expressSession = require('express-session');
 
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
@@ -28,10 +28,11 @@ app.use(expressSession({secret: 'google'}));
 app.listen(2000, ()=>{
     console.log('Klar til at booke møder')
 })
-app.get('/', index);//Det er kun den ene som bliver gettet. Vi skal have lavet en "double" getter.
+app.get('/', index);//Den henter to modules
 app.get('/login',LoginController);
-app.get('/auth/opretRevisor',opretRevisorController);
-app.get('/revisorprofil',revisorProfilController);
+app.get('/opretRevisor',opretRevisorController);
+app.get('/revisorprofil', revisorProfilController);
+
 app.post('/afdelinger/revisor',gemRevisor); //Her bliver det defineret hvor det indtastede skal postes til. '/Models/revisor' bliver brugt i form action i opretRevisor.ejs
 app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til oe, da det lavede fejl.
 app.post('/afdeling', gemAfdeling);
