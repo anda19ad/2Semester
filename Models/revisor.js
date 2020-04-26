@@ -1,7 +1,10 @@
 //De modeller som databasen består af, bliver defineret her
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const mongooseValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const md5 = require('md5');
+const uuid = require('shortid');
 
 //Definerer modellen. Datastrukturen.
 
@@ -36,12 +39,19 @@ const bcrypt = require('bcrypt')
         Kodeord: {
             type: String,
             required: true,
-        }
-    });
+            hash: 10,
 
+        }, timestamp:
+            {
+            timestamps: true
+            },
 
+});
+
+/*
 revisorSchema.pre('save', function (next) {
     const Brugernavn = this;
+
 
     bcrypt.hash(Brugernavn.Kodeord, 10, (error, hash) => {
         Brugernavn.Kodeord = hash;
@@ -49,7 +59,45 @@ revisorSchema.pre('save', function (next) {
     })
 });
 
+ */
+
+revisorSchema.plugin(mongooseValidator);
+
+revisorSchema.virtual('Kodeord')
+    .get(function() {
+        return this.passwordHash;
+    })
+    .set(function(pass) {
+        this.Kodeord = pass;
+        this.passwordHash = bcrypt.hashSync(pass, 10);
+    });
+
+revisorSchema.path('passwordHash').validate(function(pass) {
+    if (this.Kodeord.length < 3) {
+        this.invalidate('Kodeord', 'Kodeord skal være mere end 8 tegn');
+    }
+});
+
+revisorSchema.methods.validatePassword = function(Kodeord) {
+    return bcrypt.compareSync(Kodeord, this.passwordHash);
+};
+
+
+revisorSchema.pre('save', function(next) {
+    // Allows us to just pass the form body directly to the model
+    // and removes any properties that don't match the schema.
+    for (prop in this) {
+        if (!revisorSchema.obj.hasOwnProperty(prop)) continue;
+        delete this[prop];
+    }
+    next();
+});
+
+
+
 //Gør det muligt at gemme revisorer s. 95
 const Revisor = mongoose.model('Revisor',revisorSchema);
 module.exports = Revisor;
+
+
 
