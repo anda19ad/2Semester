@@ -10,11 +10,4 @@ module.exports=(req,res,next)=>{
     })
 };
 
-module.exports.findById=(req,res,next)=>{
-    Revisor.findById(req.session.RevisorId,(error, Revisor)=>{
-        if(error||!Revisor)
-            return res.redirect('/login');
-        return res.render('/profile', Revisor);
-    })
-};
 

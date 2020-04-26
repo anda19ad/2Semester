@@ -1,6 +1,18 @@
 const Moede = require ('../Models/møde');
 const Revisor = require ('../Models/revisor');
 
+exports.revisorProfil = async(req,res,)=>{
+    const revisors = await Revisor.findById(req.session.RevisorId);
+    console.log(revisors);
+    const moedes = await Moede.find({});
+    res.render('revisorProfil',{
+        moedes,
+        revisors
+    });
+};
+
+
+/*
 exports.getById = async (req, res) =>{
     const id = req.param.id
     const revisor = await Revisor.findOne({"_id": id});
@@ -9,6 +21,9 @@ exports.getById = async (req, res) =>{
     })
 };
 
+ */
+
+/*
 exports.revisorProfil = async(req,res,)=>{
     const moedes = await Moede.find({});
     const revisors = await Revisor.find({});
@@ -17,6 +32,8 @@ exports.revisorProfil = async(req,res,)=>{
         revisors
     });
 };
+
+*/
 
 
 /*
