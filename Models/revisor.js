@@ -1,10 +1,14 @@
 //De modeller som databasen består af, bliver defineret her
+
 const mongoose = require("mongoose");
-const mongooseValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
+const mongooseValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcrypt');
 const md5 = require('md5');
 const uuid = require('shortid');
+const Revisor = require('revisor/:id');
+
+
 
 //Definerer modellen. Datastrukturen.
 
@@ -41,10 +45,7 @@ const uuid = require('shortid');
             required: true,
             hash: 10,
 
-        }, timestamp:
-            {
-            timestamps: true
-            },
+        },
 
 });
 

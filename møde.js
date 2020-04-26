@@ -90,4 +90,3 @@ class kortMøde extends Møde {
 
     }
 }
-

@@ -2,11 +2,10 @@ const express = require('express'); //Henter express
 const app = new express(); // kalder den app, for at gøre det nemmere at bruge senere
 const ejs = require('ejs'); //Anvender ejs engine
 const mongoose = require('mongoose'); //For at kunne forbinde til databasen skal mongoose hentes
-const connect = require('/mongo');
 const bodyParser = require('body-parser'); // For at kunne lave middleware
 const expressSession = require('express-session');
+const connect = require('/mongo');
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
-const serialization = require('/serialization');
 
 //henter controller filerne
 const index = require('./controllers/indexController').index;
@@ -18,9 +17,11 @@ const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
 
+
 //Henter middleware (MW)
 const authMW = require('./middleware/authMW');
 
+const serialization = require('/serialization');
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
 app.use(bodyParser.json());
