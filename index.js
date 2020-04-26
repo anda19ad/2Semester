@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); 
 const index = require('./controllers/indexController').index;
 const LoginController = require('./controllers/LoginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
-const revisorProfilController = require('./controllers/revisorProfilController');
+const revisorProfilController = require('./controllers/revisorProfilController').revisorProfil;
 const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anvendes til at gemme data i databasen, bliver hentet her
 const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');

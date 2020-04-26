@@ -1,12 +1,15 @@
 const Moede = require ('../Models/møde');
+const Revisor = require ('../Models/revisor');
 
-module.exports = async(req,res,)=>{
+exports.revisorProfil = async(req,res,)=>{
     const moedes = await Moede.find({});
-    console.log(req.session)
+    const revisors = await Revisor.find({});
     res.render('revisorProfil',{
-        moedes
+        moedes,
+        revisors
     });
 };
+
 
 /*
 module.exports = (req,res) =>{
