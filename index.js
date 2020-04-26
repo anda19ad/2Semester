@@ -17,8 +17,9 @@ const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
 const logudcontroller = require('./controllers/logUd');
 
+
 //Henter middleware (MW)
-const authMW = require('./middleware/authMW');
+const  {findById, authMW}  = require('./middleware/authMW');
 
 
 //Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
@@ -35,12 +36,13 @@ app.listen(2000, ()=>{
 app.get('/', index);//Den henter to modules
 app.get('/login',LoginController);
 app.get('/opretRevisor',opretRevisorController);
-app.get('/revisorprofil', authMW, revisorProfilController);
+app.get('/revisorprofil', authMW, findById, revisorProfilController);
 app.post('/afdelinger/revisor',gemRevisor); //Her bliver det defineret hvor det indtastede skal postes til. '/Models/revisor' bliver brugt i form action i opretRevisor.ejs
 app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til oe, da det lavede fejl.
 app.post('/afdeling', gemAfdeling);
 app.post('/loginRevisor', loginRevisor);
 app.get('/logud',logudcontroller);
+
 
 
 
