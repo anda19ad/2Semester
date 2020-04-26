@@ -5,6 +5,6 @@ module.exports=(req,res,next)=>{
     Revisor.findById(req.session.RevisorId,(error,Revisor)=>{
         if(error||!Revisor)
             return res.redirect('/login');
-        next() //hvis brugeren er valid nok, fortsætter de ind på siden, med denne indbyggede funktion
+        next() //hvis revisoren er valid nok, fortsætter de ind på siden, med denne indbyggede funktion
     })
 };
