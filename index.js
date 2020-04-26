@@ -6,6 +6,7 @@ const bodyParser = require('body-parser'); // For at kunne lave middleware
 const expressSession = require('express-session');
 const connect = require('/mongo');
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
+const datepicker = require('js-datepicker');
 
 //henter controller filerne
 const index = require('./controllers/indexController').index;
@@ -17,6 +18,7 @@ const gemMoede = require ('./controllers/gemMøde');
 const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
 
+const picker = datepicker ( document.getElementById( Date ));
 
 //Henter middleware (MW)
 const authMW = require('./middleware/authMW');

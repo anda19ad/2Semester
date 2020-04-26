@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Projekt 0</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/node_modules/js-datepicker/dist/datepicker.min.css">
 </head>
 <%- include('layouts/navbar');-%>
 <body>
@@ -88,7 +89,13 @@
 
                         <label for="mail">Mail:</label><br>
                         <input type="email" name="email" id="mail" placeholder="E-mail"><br>
-                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
+                        <span id="fejlEmail" class="fejlbesked"></span><br><br
+
+                        <label for="date">Vælg dato:</label>
+                        <input type="date" id="date" name="date">
+                        <input type="submit">
+                        <span id="fejlDate" class="fejlbesked"></span><br><br
+                        <br><br
 
                         <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
                         <select id="mødetype" name="moedeType" >
@@ -127,5 +134,6 @@
         });
     </script>
 -->
+    <script src="datepicker.min.js"></script>
 </body>
 </html>
