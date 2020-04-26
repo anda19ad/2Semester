@@ -11,6 +11,8 @@ const MoedeSchema = new Schema({
     moedeType: String,
     startTime:Number,
     slutTime:Number,
+    dato: Date,
+
 });
 
 /*
