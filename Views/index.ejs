@@ -109,7 +109,12 @@
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
 
-                        <button type="submit" id="bookMødeSubmit">Book møde</button>
+                        <button type="submit" id="bookMødeSubmit" onclick="besked()">Book møde</button>
+                        <script>
+                            function besked() {
+                                alert("Dit møde er booket!");
+                            }
+                        </script>
                     </form>
                 </div>
 
