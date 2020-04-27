@@ -5,7 +5,7 @@ const Revisor = require('../Models/revisor');
 module.exports = async (req,res)=> {
     await Moede.create({
         ...req.body,
-        valgtRevisor: req.session.RevisorId
+       // valgtRevisor: req.session.RevisorId
 
     });
 
