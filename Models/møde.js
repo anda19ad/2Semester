@@ -10,7 +10,14 @@ const MoedeSchema = new Schema({
     tlf: String,
     //hvis vi ændrer møde type til revisor kan det nok virke så det er forbundet,
     // det er også nu, men skal ændres fra Mtype til revisor
-    moedeType: String,
+   moedeType: String,
+   /* valgtRevisor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'revisors',
+        required: true
+    },
+
+    */
     startTime:Number,
     slutTime:Number,
     dato: Date,
