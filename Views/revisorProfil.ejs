@@ -16,13 +16,32 @@
 <!-- <button id="logUd" onclick="logAf()">Log af</button> -->
 <h2>Oversigt over møder:</h2>
 <% for (var i=0; i< moedes.length; i++) { %>
-    <span ><%= moedes[i].kundenavn%><br>
-    <%= moedes[i].email%><br>
-    <%= moedes[i].tlf%><br>
-    <%= moedes[i].moedeType%><br>
-    <%= moedes[i].startTime%><br>
-    <%= moedes[i].slutTime%><br>
+    <span >
+        <h3>Møde info:</h3>
+
+        Kunde navn:   <%= moedes[i].kundenavn%><br>
+        <br>
+        Kunde E-mail:<br>
+            <%= moedes[i].email%><br>
+         <br>
+        Kunde Tlf:<br>
+            <%= moedes[i].tlf%><br>
+        <br>
+        Valgt Revisor: <br>
+            <%= moedes[i].moedeType%><br>
+        <br>
+       <!-- Valgt Tid: <br>
+            <%= moedes[i].startTime%><br>
+            <%= moedes[i].slutTime%><br> -->
+
+       Dato for afholdelse: <br>
+            <%= moedes[i].dato%><br>
+        <br>
+        Valgt tid: <br>
+        <%= moedes[i].time%>
+
     </span>
+        <br><br><br>
     <% } %>
 
 

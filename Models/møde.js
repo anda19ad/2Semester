@@ -8,11 +8,14 @@ const MoedeSchema = new Schema({
     kommentar:String,
     email:String,
     tlf: String,
+    //hvis vi ændrer møde type til revisor kan det nok virke så det er forbundet,
+    // det er også nu, men skal ændres fra Mtype til revisor
     moedeType: String,
     startTime:Number,
     slutTime:Number,
     dato: Date,
-
+    //tid: Date,  Hvilken type skal det være ??
+    time : Number,
 });
 
 /*
