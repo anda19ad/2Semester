@@ -97,10 +97,10 @@
 
 
                         <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
-                        <select id="mødetype" name="moedeType" >
+                        <select id="brugernavn" name="brugernavn" >
                             <option selected disabled value="0">  Vælg  </option>
                             <% for (var i=0; i< revisors.length; i++) { %>
-                            <option><%=revisors[i].Efternavn%></option>
+                            <option><%=revisors[i].Brugernavn%></option>
                             <% } %>
                         </select><br>
 

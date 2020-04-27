@@ -6,6 +6,13 @@ const bodyParser = require('body-parser'); // For at kunne lave middleware
 const expressSession = require('express-session');
 mongoose.connect('mongodb://localhost/bookingSystemDb',{useNewUrlParser:true}); /*Der skabes forbindelse til databasen */
 
+//Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('public'));
+app.set('view engine','ejs'); //Sætter EJS som templating engine
+app.use(expressSession({secret: 'google'}));
+
 //henter controller filerne
 const index = require('./controllers/indexController').index;
 const LoginController = require('./controllers/LoginController');
@@ -20,14 +27,6 @@ const logudcontroller = require('./controllers/logUd');
 
 //Henter middleware (MW)
 const authMW  = require('./middleware/authMW');
-
-
-//Anvender bodyparser, som er en del af NodeJS, således at der automatisk kan postes data fra en html "form" til databasen
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('public'));
-app.set('view engine','ejs'); //Sætter EJS som templating engine
-app.use(expressSession({secret: 'google'}));
 
 
 app.listen(2000, ()=>{

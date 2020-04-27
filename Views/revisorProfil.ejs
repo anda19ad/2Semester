@@ -10,13 +10,14 @@
 <div id="oversigt">
 <h1> Revisor Login </h1>
 
-    <span> Du er logget ind som:  <br> <%= revisors.Fornavn %> <%= revisors.Efternavn%> </span>
+    <span> Du er logget ind som:  <br> <%= revisor.Fornavn %> <%= revisor.Efternavn%> </span>
 
 <div class="navn" id="revisorNavn"></div>
 <!-- <button id="logUd" onclick="logAf()">Log af</button> -->
 <h2>Oversigt over møder:</h2>
-<% for (var i=0; i< moedes.length; i++) { %>
-    <span >
+    <% for (var i=0; i< moedes.length; i++) { %>
+        <span>
+
         <h3>Møde info:</h3>
 
         Kunde navn:   <%= moedes[i].kundenavn%><br>
@@ -28,7 +29,7 @@
             <%= moedes[i].tlf%><br>
         <br>
         Valgt Revisor: <br>
-            <%= moedes[i].moedeType%><br>
+            <%= moedes[i].valgtRevisor%><br>
         <br>
        <!-- Valgt Tid: <br>
             <%= moedes[i].startTime%><br>
@@ -42,7 +43,8 @@
 
     </span>
         <br><br><br>
-    <% } %>
+    <% }   %>
+
 
 
 <br>

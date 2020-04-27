@@ -1,15 +1,19 @@
 const Moede = require('../Models/møde');
 const path = require('path');
-const Revisor = require('../Models/revisor');
+const Revisor =require('../Models/revisor');
 
 module.exports = async (req,res)=> {
-    await Moede.create({
-        ...req.body,
-       // valgtRevisor: req.session.RevisorId
+    // findOne istedet for find, fordi find returnerer en liste(array) og findone kun den første den finder
 
+    const revisor = await Revisor.findOne({'Brugernavn': req.body.brugernavn});
+
+    // for at øge læsbarheden på koden. Det er her mødet oprettes
+    const data = {...req.body, valgtRevisor: revisor._id.toString()};
+    //nedenfor gemmes den i databasen med den valgte data.
+    await Moede.create({
+        ...data
     });
 
-    console.log(req.body);
         res.redirect('/')
 };
 
