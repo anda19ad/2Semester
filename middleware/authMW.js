@@ -9,5 +9,3 @@ module.exports=(req,res,next)=>{
         next() //hvis revisoren er valid nok, fortsætter de ind på siden, med denne indbyggede funktion
     })
 };
-
-

@@ -12,24 +12,8 @@ const afdelingSchema = new Schema({
     }
 });
 
-/*
-//fang error, catch eller consol
-
-HER SKAL VI LAVE EN FUNKTION DER TJEKKER OM COLLECTION ER OPRETTET OG HVIS IKKE SKAL DEN OPRETTES.
-
-function findAfdeling() {
-    db.collection.findOne('Afdeling')
-}
-console.log(findAfdeling());
-
-if (findAfdeling() == null) {
-
-}*/
-
-
 // opretter collectionen Afdeling.
 const Afdeling = mongoose.model('Afdeling', afdelingSchema);
-
 
 // når programmet startes første gang, skal der oprettes documents til collectionen Afdeling.
 // Dette udføres af funktionen opretAfdelinger().
@@ -41,13 +25,12 @@ var Afdeling1 = new Afdeling( {afdelingNavn: 'Årsregnskab'} );
 var Afdeling2 = new Afdeling( { afdelingNavn: 'Skat og moms'} );
 
 
-//her gemmes documents til db vha. .save
+//her gemmes documents til db vha .save
 
     Afdeling1.save(function (err, afdeling) {
         if (err) return console.error(err);
         console.log(afdeling.afdelingNavn + " er oprettet");
     });
-
 
     Afdeling2.save(function (err, afdeling) {
         if (err) return console.error(err);

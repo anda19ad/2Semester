@@ -8,9 +8,8 @@ const MoedeSchema = new Schema({
     kommentar:String,
     email:String,
     tlf: String,
-    //hvis vi ændrer møde type til revisor kan det nok virke så det er forbundet,
-    // det er også nu, men skal ændres fra Mtype til revisor
- //  moedeType: String,
+//hvis vi ændrer møde type til revisor kan det nok virke så det er forbundet,
+// det er også nu, men skal ændres fra Mtype til revisor
     startTime:Number,
     slutTime:Number,
     dato: Date,
@@ -18,15 +17,8 @@ const MoedeSchema = new Schema({
         //hver revisor har mange møder, kun 1 møde til revisor
         type: mongoose.Schema.Types.ObjectID,
         ref: 'revisors',
-        // required: true
     },
-    //tid: Date,  Hvilken type skal det være ??
-   // time : Number,
 });
 
-/*
-if(!mongoose.connection.models['møde'])
- */
 const Moede = mongoose.model("Moede", MoedeSchema);
 module.exports = Moede;
-

@@ -11,10 +11,6 @@ var roles = {
     customer: 'customer'
 };
 var revisorSchema = new Schema({
-  /*  revisorId: {
-        type: String,
-        required: true },
-   */
     Fornavn: {
         type: String,
         required: true,
@@ -26,7 +22,8 @@ var revisorSchema = new Schema({
     Email: {
         type: String,
         unique: true,
-        required: true },
+        required: true,
+    },
     Tlf: {
         type: Number,
         unique: true,
@@ -45,44 +42,6 @@ var revisorSchema = new Schema({
         type: [String],
         default: [roles.admin] }
 });
-/*
-    const revisorSchema = new Schema({
-        Fornavn: {
-            type: String,
-            required: true,
-        },
-        Efternavn: {
-            type: String,
-            required: true,
-        },
-        Email: {
-            type: String,
-            unique: true,
-            required: true,
-        },
-        Tlf: {
-            type: Number,
-            unique: true,
-            required: true,
-        },
-        startTime: Number,
-        slutTime: Number,
-        startMinut: Number,
-        slutMinut: Number,
-        Brugernavn: {
-            type: String,
-            unique: true,
-            required: true,
-        },
-        Kodeord: {
-            type: String,
-            required: true,
-        }
-    });
-
- */
-
-
 revisorSchema.pre('save', function (next) {
     const Brugernavn = this;
 
