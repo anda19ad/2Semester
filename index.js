@@ -24,6 +24,7 @@ const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
 const logudcontroller = require('./controllers/logUd');
 const sletMoede = require('./controllers/sletMoede').delete_moede;
+const opdaterRevisor = require('./controllers/opdaterRevisor').opdater_revisor;
 
 //Henter middleware (MW)
 const authMW  = require('./middleware/authMW');
@@ -42,6 +43,7 @@ app.post('/afdeling', gemAfdeling);
 app.post('/loginRevisor', loginRevisor);
 app.get('/logud',logudcontroller);
 app.del('/revisorprofil', sletMoede);
+app.put('/'), opdaterRevisor;
 
 
 
