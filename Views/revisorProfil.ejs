@@ -7,14 +7,22 @@
 </head>
 <%- include('layouts/navbar');-%>
 <body>
+<h1> Din Profil </h1>
 
-<h1> Revisor Login </h1>
+<span> <h2>Du er logget ind som: </h2> <br>
+   <h3> <i> <%= revisor.Fornavn %> <%= revisor.Efternavn%> </i> </h3>
+    </span> <br>
+<br>
+<div class="profilKolonne1">
 
-    <span> Du er logget ind som:<br>
-        <%= revisor.Fornavn %> <%= revisor.Efternavn%>
-    </span><br>
 
 <h2>Oversigt over møder:</h2>
+
+    <h4> Se liste med dine møder nedenfor:</h4>
+
+    <div class="profilKolonne3">
+
+
 
     <% for (var i=0; i< moedes.length; i++) { %>
         <span>
@@ -37,48 +45,67 @@
             <%= moedes[i].kommentar%><br>
     </span>
 
-        <a href="/sletprofil/<%= moedes[i]._id%>"> Slet Møde </a>
+         <a class="redigerknap redigerknap1" href="/sletprofil/<%= moedes[i]._id%>"> Slet Møde </a>
     <% }   %>
+    </div>
 
 
 <!-- <%%> tags bliver brugt til at kunne indsætte data fra db på siden  -->
 
+    <br><br><br>
+    <h2> Rediger din profil: </h2>
+
+<h4> Udfyld alle felter for at ændre dine detaljer:</h4>
+
+    <div class="profilKolonne2">
+
 <form action="/redigerRevisor/<%= revisor._id%>" method="POST"  id="redigerRevisorForm" class="redigerRevisor">
 
     <div class="redigerRevisorinput">
-        <br/> <input type="text" name="Fornavn" id="Fornavn" placeholder="Fornavn"><br/>
+        <p> Fornavn: </p>
+         <input type="text" name="Fornavn" id="Fornavn" placeholder="Fornavn"><br/>
     </div>
     <span id="fejlFornavn" class="fejlbesked"></span><br><br>
 
     <div class="redigerRevisorinput">
-        <br/> <input type="text" name="Efternavn" id="Efternavn" placeholder="Efternavn"><br/>
+        <p> Efternavn: </p>
+        <input type="text" name="Efternavn" id="Efternavn" placeholder="Efternavn"><br/>
     </div>
     <span id="fejlEfternavn" class="fejlbesked"></span><br><br>
 
     <div class="redigerRevisorinput">
-        <br/> <input type="text" name="Email" id="Email" placeholder="Email"><br/>
+
+        <p> E-mail: </p>
+        <input type="text" name="Email" id="Email" placeholder="Email"><br/>
     </div>
     <span id="fejlEmail" class="fejlbesked"></span><br><br>
 
     <div class="redigerRevisorinput">
-        <br/> <input type="number" name="Tlf" id="Tlf" placeholder="Tlf nr."><br/>
+        
+        <p> Telefon nummer:</p>
+        <input type="number" name="Tlf" id="Tlf" placeholder="Tlf nr."><br/>
     </div>
     <span id="fejlTlf" class="fejlbesked"></span><br><br>
 
 
     <div class="redigerRevisorinput">
-        <br/> <input type="text" class="form-control" name="Brugernavn" id="Brugernavn" placeholder="Brugernavn"><br/>
+        <p> Brugernavn: </p>
+        <input type="text" class="form-control" name="Brugernavn" id="Brugernavn" placeholder="Brugernavn"><br/>
     </div>
     <span id="fejlBrugernavn" class="fejlbesked"></span><br><br>
 
     <div class="redigerRevisorinput">
-        <br/> <input type="password" class="form-control" name="Kodeord" id="Kodeord" placeholder="Kodeord"><br/>
+        <p> Kodeord: </p>
+        <input type="password" class="form-control" name="Kodeord" id="Kodeord" placeholder="Kodeord"><br/>
     </div>
     <span id="fejlKodeord" class="fejlbesked"></span><br><br>
 
     <!-- knap til at opdatere/replace ting i revisor -->
-    <button type="submit"  id="redigerRevisorSubmit" class="redigerRevisorSubmit"> Rediger dine informationer </button><br/><br/>
+    <button type="submit"  id="redigerRevisorSubmit" class="redigerknap redigerknap1"> Rediger dine informationer </button><br/><br/>
 </form>
+    </div>
+    </div>
+</div>
 
 </body>
 </html>
