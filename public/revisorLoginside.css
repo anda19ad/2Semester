@@ -21,7 +21,7 @@ h1{
 
 #revisorNavn{
     float: top;
-    font: 20px;
+    font-size: 20px;
     width: 40%;
     border-bottom: 2px solid black;
     padding-bottom: 1%;
