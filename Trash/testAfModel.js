@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Revisor = require('./Models/revisor')
+const Revisor = require('../Models/revisor')
 mongoose.connect('mongodb://localhost/test_database',{useNewUrlParser:true});
 Revisor.create({
     Fornavn:'Andreas',

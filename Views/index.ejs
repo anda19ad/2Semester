@@ -7,13 +7,10 @@
 </head>
 <%- include('layouts/navbar');-%>
 <body>
-
-    <!-- For at kunne samle de to bokse, som udgør programmet.
-    Mother er "mainContainer" og siblings er "optionContainer" og "calenderContainer" -->
     <div class="mainContainer">
         <div class="step1Container">
             <div class="optionContainer">
-                <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
+
                 Vælg din ønskede afdeling: <br>
                 <select id="revisorOption">
                     <% for (var i=0; i< afdelings.length; i++) { %>
@@ -64,22 +61,6 @@
             </div>
         </div>
     </div>
-<!--
-    <script src="Kalender.js"></script>
-    <script src="../Revisorhus.js"></script>
-    <script src="Revisor.js"></script>
-    <script src="Møde.js"></script>
-    <script src="../Trash/databehandling.js"></script>
-    <script src="../main.js"></script>
-    <script src="../validation.js"></script>
--->
-<!--
-    <script>
-        document.getElementById("bookMødeSubmit").addEventListener("click", function(e){
-            e.preventDefault();
-            validereInfo();
-        });
-    </script>
--->
+
 </body>
 </html>

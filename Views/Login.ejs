@@ -7,9 +7,7 @@
 </head>
 <%- include('layouts/navbar');-%>
 <body>
-
     <div id="loginContainer">
-        <!-- <form id="loginForm" name="Revisor login" onsubmit="checkLogin()" method="get"> -->
         <form action= "/loginRevisor" method="POST" id="loginForm" name="loginRevisor">
             <h2>Login</h2>
             <span id="loginMessage" class="fejlbesked"></span><br><br>
@@ -21,19 +19,7 @@
             </div><br>
             <br/>
             <button type="submit" id="submit" class="Login" style="cursor: pointer">Log ind</button><br><br>
-        <!-- opretter her en link til opret bruger side som bliver stylet som en knap -->
-            <!-- <a href="opretRevisor.ejs" class="opretRevisorKnap">Opret</a> -->
-
     </form>
-</div>
-<!--
-    <script src="Kalender.js"></script>
-    <script src="../Revisorhus.js"></script>
-    <script src="Revisor.js"></script>
-    <script src="Møde.js"></script>
-    <script src="../Trash/databehandling.js"></script>
-    <script src="../Login.js"></script>
--->
-
+    </div>
 </body>
 </html>
