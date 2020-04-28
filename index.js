@@ -15,7 +15,7 @@ app.use(expressSession({secret: 'google'}));
 
 //henter controller filerne
 const index = require('./controllers/indexController').index;
-const LoginController = require('./controllers/LoginController');
+const LoginController = require('./Controllers/loginController');
 const opretRevisorController = require('./controllers/opretRevisorController');
 const revisorProfilController = require('./controllers/revisorProfilController').revisorProfil;
 const gemRevisor = require ('./controllers/gemRevisor'); //En controller som anvendes til at gemme data i databasen, bliver hentet her
