@@ -6,8 +6,3 @@ module.exports = async(req,res)=>{
         afdelings
     });
 };
-/*
-module.exports = (req,res) =>{
-    res.render('opretRevisor') //Henter opretRevisor.ejs
-}
-*/
