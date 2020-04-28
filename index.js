@@ -24,7 +24,7 @@ const gemAfdeling = require('./controllers/gemAfdeling');
 const loginRevisor = require('./controllers/loginRevisor');
 const logudcontroller = require('./controllers/logUd');
 const sletMoede = require('./controllers/sletMoede').delete_moede;
-const opdaterRevisor = require('./controllers/opdaterRevisor').opdater_revisor;
+const redigerRevisor = require('./controllers/redigerRevisor').opdater_revisor;
 
 //Henter middleware (MW)
 const authMW  = require('./middleware/authMW');
@@ -42,8 +42,8 @@ app.post('/revisor/moede',gemMoede); // her gemmes møde - vi har lavet ø til o
 app.post('/afdeling', gemAfdeling);
 app.post('/loginRevisor', loginRevisor);
 app.get('/logud',logudcontroller);
-app.del('/revisorprofil', sletMoede);
-app.put('/'), opdaterRevisor;
+app.get('/sletprofil/:id', sletMoede);
+app.post('/redigerRevisor/:id', redigerRevisor);
 
 
 

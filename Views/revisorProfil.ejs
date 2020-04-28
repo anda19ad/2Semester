@@ -7,7 +7,7 @@
 </head>
 <%- include('layouts/navbar');-%>
 <body>
-<div id="oversigt">
+
 <h1> Revisor Login </h1>
 
     <span> Du er logget ind som:<br>
@@ -15,9 +15,11 @@
     </span><br>
 
 <h2>Oversigt over møder:</h2>
+
     <% for (var i=0; i< moedes.length; i++) { %>
-    <span>
+        <span>
         <h3>Møde info:</h3>
+
 
         Kunde navn:<br>
             <%= moedes[i].kundenavn%><br>
@@ -34,10 +36,49 @@
         Evt. kommentarer:<br>
             <%= moedes[i].kommentar%><br>
     </span>
-        <br>
-            <button type="submit" name="moedeSlet" onclick="delete_moede()"> Slet Møde </button><br><br>
+
+        <a href="/sletprofil/<%= moedes[i]._id%>"> Slet Møde </a>
     <% }   %>
-    </form>
-</div>
+
+
+<!-- <%%> tags bliver brugt til at kunne indsætte data fra db på siden  -->
+
+<form action="/redigerRevisor/<%= revisor._id%>" method="POST"  id="redigerRevisorForm" class="redigerRevisor">
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="text" name="Fornavn" id="Fornavn" placeholder="Fornavn"><br/>
+    </div>
+    <span id="fejlFornavn" class="fejlbesked"></span><br><br>
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="text" name="Efternavn" id="Efternavn" placeholder="Efternavn"><br/>
+    </div>
+    <span id="fejlEfternavn" class="fejlbesked"></span><br><br>
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="text" name="Email" id="Email" placeholder="Email"><br/>
+    </div>
+    <span id="fejlEmail" class="fejlbesked"></span><br><br>
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="number" name="Tlf" id="Tlf" placeholder="Tlf nr."><br/>
+    </div>
+    <span id="fejlTlf" class="fejlbesked"></span><br><br>
+
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="text" class="form-control" name="Brugernavn" id="Brugernavn" placeholder="Brugernavn"><br/>
+    </div>
+    <span id="fejlBrugernavn" class="fejlbesked"></span><br><br>
+
+    <div class="redigerRevisorinput">
+        <br/> <input type="password" class="form-control" name="Kodeord" id="Kodeord" placeholder="Kodeord"><br/>
+    </div>
+    <span id="fejlKodeord" class="fejlbesked"></span><br><br>
+
+    <!-- knap til at opdatere/replace ting i revisor -->
+    <button type="submit"  id="redigerRevisorSubmit" class="redigerRevisorSubmit"> Rediger dine informationer </button><br/><br/>
+</form>
+
 </body>
 </html>

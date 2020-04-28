@@ -4,7 +4,6 @@ function validereInfo() {
     var kundenavn = document.getElementById("kundenavn").value;
     var tlfnr = document.getElementById("tlfnr").value;
     var mail = document.getElementById("mail").value;
-    var mødetype = document.getElementById("mødetype").value;
     var kommentar = document.getElementById("kommentar").value;
 
     var revisor = document.getElementById("revisorOption").value;
@@ -41,11 +40,6 @@ function validereInfo() {
             korrektInput = false;
         }
 
-        //Validerer at mødetype er valgt
-        if (mødetype == 0) {
-            document.getElementById("fejlMøde").innerHTML = "Venligst vælg en mødetype <br/>";
-            korrektInput = false;
-        }
 
         if(korrektInput) {
             gemtilLS();

@@ -42,14 +42,38 @@ var revisorSchema = new Schema({
         type: [String],
         default: [roles.admin] }
 });
-revisorSchema.pre('save', function (next) {
-    const Brugernavn = this;
 
-    bcrypt.hash(Brugernavn.Kodeord, 10, (error, hash) => {
-        Brugernavn.Kodeord = hash;
+// ændret Brugernavn.kodeord til this.kodeord
+
+revisorSchema.pre('save', function (next) {
+    const revisor = this;
+    bcrypt.hash(revisor.Kodeord, 10, (error, hash) => {
+        revisor.Kodeord = hash;
         next()
     })
 });
+
+// laver en anden bcrypt til når du updater fremfor saver.
+// ellers gemmes forrige pswd hash og man kan derfor ikke logge ind med det nye kodeord
+
+revisorSchema.pre("findOneAndUpdate", function(next) {
+    const kodeord = this.getUpdate().Kodeord;
+    if (!kodeord) {
+        return next();
+    }
+    try {
+        const salt = bcrypt.genSaltSync();
+        const hash = bcrypt.hashSync(kodeord, salt);
+        this.getUpdate().Kodeord = hash;
+        next();
+    } catch (error) {
+        return next(error);
+    }
+});
+
+
+
+
 
 //Gør det muligt at gemme revisorer s. 95
 const Revisor = mongoose.model('Revisor',revisorSchema);
