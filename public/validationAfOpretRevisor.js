@@ -1,17 +1,19 @@
 /*Lavet af AD
 Formålet med denne JS fil er at få korrekt data på de revisorer som opretter sig og så
 disse data bliver brugt på henholdsvis revisor siden og i kalenderen*/
-
+console.log('Forbindelse til validationAfOpretRevisor.js');
 function kontrolInfo() {
     // alle indtast muligheder hentes via en getElementById. Værdierne hentes ved at bruge .value
     var fornavn = document.getElementById("Fornavn").value;
     var efternavn = document.getElementById("Efternavn").value;
     var email = document.getElementById("Email").value;
     var tlf = document.getElementById("Tlf").value;
+    /*
     var startTime = document.getElementById("startTime").value;
     var startMinut = document.getElementById("startMinut").value;
     var slutTime = document.getElementById("slutTime").value;
     var slutMinut = document.getElementById("slutMinut").value;
+     */
     var brugernavn = document.getElementById("Brugernavn").value;
     var kodeord = document.getElementById("Kodeord").value;
 
@@ -19,6 +21,7 @@ function kontrolInfo() {
     /* for at definere en start tid skal time og minut kobles. Af hensyn til JS kalender koden,
     konverteres 30 min til 0.5 time. Fordi der er i HTML er defineret at man kun kan vælge 30 eller nul, defineres
     der ikke ydereligere */
+    /*
     var startTid = startTime + ":" + startMinut;
     if (startMinut == 30){
         startMinut = 0.5
@@ -29,9 +32,10 @@ function kontrolInfo() {
     if (slutMinut == 30){
         slutMinut = 0.5
     }
+     */
 
     //Test af at det virker
-    console.log(fornavn+efternavn+email+tlf+startTid+slutTid+brugernavn+kodeord);
+    console.log(fornavn+efternavn+email+tlf+brugernavn+kodeord);
 
     //For at funktionen kan køre, skal den køres. Det gør den her
     kontrolInput();
@@ -87,12 +91,14 @@ function kontrolInfo() {
        /*Det skal ikke være muligt at have kunder fra f.eks. kl. 1400-0800 derfor skal start tid
        //være mindre end sluttiden. Der refereres til de tidligere definerede variabler
        Inde i HTML, er det defineret at man ikke kan taste et tal som er større end 24 */
+       /*
        if (startTime>slutTime) {
            document.getElementById("fejlTid").innerHTML = "Indtast korrekt tid";
            inputCorrect = false;
        } else {
            document.getElementById("fejlTid").innerHTML = "";
        }
+        */
 
        /*Kontrol af brugernavn, først kontrolleres at der bliver skrevet noget til brugernavnet. Dernæste skal det kontrolleres,
        at brugernabnet er unikt. Der er lavet et for loop som kører alle brugernavnene igennem og hvis et navn er lig med det
@@ -102,7 +108,7 @@ function kontrolInfo() {
            document.getElementById("fejlBrugernavn").innerHTML = "Indtast brugernavn";
            inputCorrect = false;
            console.log(brugernavn);
-       } else {
+       } /*else {
           var rh = getGemtRevisorHus();
           var listRevisorer = rh.getRevisorer();
 
@@ -113,12 +119,12 @@ function kontrolInfo() {
                   document.getElementById("fejlBrugernavn").innerHTML = "Brugernavn allerede taget";
                   inputCorrect = false;
                   break;
-              } else{
+              } */else{
                   document.getElementById("fejlBrugernavn").innerHTML = "";
               }
-          }
 
-       }
+
+
 
        /*Kontrol af at brugernavn er unikt. Der hentes en funktion fra revisor.js og databehandling.js
        Herfra bruges et loop til at gå igennem alle oprettede revisorer i local storage. */
