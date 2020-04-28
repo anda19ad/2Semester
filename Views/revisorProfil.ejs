@@ -13,6 +13,8 @@
     <span> Du er logget ind som:  <br> <%= revisor.Fornavn %> <%= revisor.Efternavn%> </span>
 
 <div class="navn" id="revisorNavn"></div>
+
+    <form id="fjernMoede" name="moedeOversigt" action="/revisorprofil" method="DELETE">
 <!-- <button id="logUd" onclick="logAf()">Log af</button> -->
 <h2>Oversigt over møder:</h2>
     <% for (var i=0; i< moedes.length; i++) { %>
@@ -28,24 +30,26 @@
          <br>
         Kunde Tlf:<br>
             <%= moedes[i].tlf%><br>
-        <br>
-        Valgt Revisor: <br>
-            <%= moedes[i].valgtRevisor%><br>
+
         <br>
        <!-- Valgt Tid: <br>
             <%= moedes[i].startTime%><br>
             <%= moedes[i].slutTime%><br> -->
 
-       Dato for afholdelse: <br>
+       Dato og tid for afholdelse: <br>
             <%= moedes[i].dato%><br>
         <br>
-        Valgt tid: <br>
-        <%= moedes[i].time%>
+
     </span>
         <br><br><br>
+            <button type="submit" name="moedeSlet" onclick="delete_moede()"> Slet Møde </button>
     <% }   %>
+    </form>
 
 <!--
+
+
+
 
 <br>
     <select id="dag">
@@ -116,7 +120,7 @@
 
 </div>
 -->
-<br>
+
 
 
 <!--
@@ -128,5 +132,6 @@
 -->
 
 
+</div>
 </body>
 </html>
