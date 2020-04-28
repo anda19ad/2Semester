@@ -13,6 +13,8 @@
     <span> Du er logget ind som:  <br> <%= revisor.Fornavn %> <%= revisor.Efternavn%> </span>
 
 <div class="navn" id="revisorNavn"></div>
+
+    <form id="fjernMoede" name="moedeOversigt" action="/revisorprofil" method="DELETE">
 <!-- <button id="logUd" onclick="logAf()">Log af</button> -->
 <h2>Oversigt over møder:</h2>
     <% for (var i=0; i< moedes.length; i++) { %>
@@ -38,9 +40,10 @@
         <br>
     </span>
         <br><br><br>
+            <button type="submit" name="moedeSlet" onclick="delete_moede()"> Slet Møde </button>
     <% }   %>
 
-
+    </form>
 
 <br>
     <select id="dag">
