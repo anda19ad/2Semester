@@ -18,6 +18,8 @@ const MoedeSchema = new Schema({
         type: mongoose.Schema.Types.ObjectID,
         ref: 'revisors',
     },
+    //tid: Date,  Hvilken type skal det være ??
+   // time : Number,
 });
 
 const Moede = mongoose.model("Moede", MoedeSchema);
