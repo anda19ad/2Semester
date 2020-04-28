@@ -33,13 +33,13 @@
                     <h3>Indtast dine oplysninger</h3>
                     <form id="opretMødeForm" action="/revisor/moede" method="POST">
                         <label for="kundenavn">Navn:</label><br>
-                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
+                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br>
+                        <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br><br>
 
                         <label for="mail">Mail:</label><br>
-                        <input type="email" name="email" id="mail" placeholder="E-mail"><br>
+                        <input type="email" name="email" id="mail" placeholder="E-mail"><br><br>
 
                         <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
                         <select id="brugernavn" name="brugernavn" >
@@ -47,7 +47,7 @@
                             <% for (var i=0; i< revisors.length; i++) { %>
                             <option><%=revisors[i].Brugernavn%></option>
                             <% } %>
-                        </select><br>
+                        </select><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
