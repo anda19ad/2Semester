@@ -28,26 +28,18 @@
            <br><br>
                 <label for="dato">Vælg dato og tid:</label>
                 <input type="datetime-local" id="dato" name="dato">
-                <span id="fejlDato" class="fejlDato"></span><br>
 
                 <div id="opretMødeContainer">
                     <h3>Indtast dine oplysninger</h3>
                     <form id="opretMødeForm" action="/revisor/moede" method="POST">
                         <label for="kundenavn">Navn:</label><br>
                         <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
-                        <span id="fejlKundenavn" class="fejlbesked"></span><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
                         <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br>
-                        <span id="fejlTlfnr" class="fejlbesked"></span><br><br>
 
                         <label for="mail">Mail:</label><br>
                         <input type="email" name="email" id="mail" placeholder="E-mail"><br>
-                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
-
-
-
-
 
                         <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
                         <select id="brugernavn" name="brugernavn" >
@@ -56,8 +48,6 @@
                             <option><%=revisors[i].Brugernavn%></option>
                             <% } %>
                         </select><br>
-
-                        <span id="fejlMøde" class="fejlbesked"></span><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
