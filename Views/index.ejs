@@ -25,76 +25,21 @@
                     <option value = "0.5" selected> 30 min</option>
                     <option value = "1"> 1 time</option>
                 </select>
-            </div>
-            <div class="calendercontainer">
-                <div class="måned">
-                    <div class="årvælgerContainer">
-                        <span id="årVenstre"><</span>
-                        <span id="år"></span>
-                        <span id="årHøjre">></span>
-                    </div>
-
-                    <div class="månedvælgerContainer">
-                        <div class="månedKnap" data-måned="0">Jan</div>
-                        <div class="månedKnap" data-måned="1">Feb</div>
-                        <div class="månedKnap" data-måned="2">Mar</div>
-                        <div class="månedKnap" data-måned="3">Apr</div>
-                        <div class="månedKnap" data-måned="4">Maj</div>
-                        <div class="månedKnap" data-måned="5">Jun</div>
-                        <div class="månedKnap" data-måned="6">Jul</div>
-                        <div class="månedKnap" data-måned="7">Aug</div>
-                        <div class="månedKnap" data-måned="8">Sep</div>
-                        <div class="månedKnap" data-måned="9">Okt</div>
-                        <div class="månedKnap" data-måned="10">Nov</div>
-                        <div class="månedKnap" data-måned="11">Dec</div>
-
-                    </div>
-                    <span id="månedNavn"></span>
-                </div>
-
-                <div class="ugedage">
-                    <div class="ugedag mandag">Man</div>
-                    <div class="ugedag tirsdag">Tir</div>
-                    <div class="ugedag onsdag">Ons</div>
-                    <div class="ugedag torsdag">Tor</div>
-                    <div class="ugedag fredrag">Fre</div>
-                    <div class="ugedag lørdag">Lør</div>
-                    <div class="ugedag søndag">Søn</div>
-                </div>
-
-                <div class="dage"></div>
-
-                <div id="tidsplan">
-                    <div class="venstreSide">
-                        <span id="tidsplanUgedag"></span>
-                        <span id="tidsplanDato"></span>
-                    </div>
-                    <div class="højreSide">
-                        <h3 class="titel">Vælg en ledig tid</h3>
-                        <div id="tiderContainer"></div>
-                    </div>
-                </div>
+           <br><br>
+                <label for="dato">Vælg dato og tid:</label>
+                <input type="datetime-local" id="dato" name="dato">
 
                 <div id="opretMødeContainer">
                     <h3>Indtast dine oplysninger</h3>
                     <form id="opretMødeForm" action="/revisor/moede" method="POST">
                         <label for="kundenavn">Navn:</label><br>
-                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
-                        <span id="fejlKundenavn" class="fejlbesked"></span><br><br>
+                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br>
-                        <span id="fejlTlfnr" class="fejlbesked"></span><br><br>
+                        <input type="number" name="tlf" id="tlfnr" placeholder="Tlf nummer"><br><br>
 
                         <label for="mail">Mail:</label><br>
-                        <input type="email" name="email" id="mail" placeholder="E-mail"><br>
-                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
-
-                        <label for="dato">Vælg tid og dato:</label>
-                        <input type="datetime-local" id="dato" name="dato">
-                        <span id="fejlDato" class="fejlDato"></span><br><br>
-
-
+                        <input type="email" name="email" id="mail" placeholder="E-mail"><br><br>
 
                         <label for="mødetype">Hvilken revisor ønsker du at benytte?:</label><br>
                         <select id="brugernavn" name="brugernavn" >
@@ -102,9 +47,7 @@
                             <% for (var i=0; i< revisors.length; i++) { %>
                             <option><%=revisors[i].Brugernavn%></option>
                             <% } %>
-                        </select><br>
-
-                        <span id="fejlMøde" class="fejlbesked"></span><br><br>
+                        </select><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
