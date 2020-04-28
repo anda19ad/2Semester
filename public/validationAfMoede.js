@@ -1,6 +1,3 @@
-//Lavet af MM
-console.log(k)
-
 //Validerer info
 function validereInfo() {
     //Tilknytter JS variablerne til værdierne indtastet i HTML-filen

@@ -49,7 +49,7 @@ document.getElementById('bookMødeSubmit').addEventListener('click', function(e)
    var kundenavn = document.getElementById('kundenavn');
    var kommentar = document.getElementById('kommentar');
 
-   //funktionen gemtilLS i validation.js benyttes også når der klikkes.
+   //funktionen gemtilLS i validationAfMoede.js benyttes også når der klikkes.
 });
 
 //Når mødelængden ændres

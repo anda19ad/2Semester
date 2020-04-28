@@ -49,13 +49,16 @@
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
 
-                        <button type="submit" id="bookMødeSubmit" onclick="besked()">Book møde</button>
-                        <script>
-                            function besked() {
-                                alert("Dit møde er booket!");
-                            }
-                        </script>
+                        <button type="submit" id="bookMoedeSubmit">Book møde</button>
+
                     </form>
+                    <script src="/validationAfMoede.js"></script>
+                    <script>
+                        document.getElementById("bookMoedeSubmit").addEventListener("click", function(e){
+                            e.preventDefault();
+                            validereInfo();
+                        });
+                    </script>
                 </div>
 
             </div>
