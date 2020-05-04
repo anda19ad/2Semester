@@ -10,8 +10,6 @@ module.exports=(req,res)=>{
         if (Revisor){
 //hvis krypteret kodeord matcher med den valgte revisors kodeord sendes man til /revisorprofil
             bcrypt.compare(Kodeord, Revisor.Kodeord, (error, same)=>{
-                console.log(error);
-                console.log(same);
                 if(same){
                     req.session.RevisorId = Revisor._id
                     res.redirect('revisorprofil')

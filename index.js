@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine','ejs'); //Sætter EJS som templating engine
-app.use(expressSession({secret: 'google'}));
+app.use(expressSession({secret: 'google', resave: true,
+    saveUninitialized: true}));
 
 //henter controller filerne
 const index = require('./controllers/indexController').index;
