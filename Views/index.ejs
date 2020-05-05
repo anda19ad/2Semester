@@ -10,7 +10,7 @@
     <div class="mainContainer">
         <div class="step1Container">
             <div class="optionContainer">
-
+                <form id="opretMødeForm" action="/revisor/moede" method="POST">
                 Vælg din ønskede afdeling: <br>
                 <select id="revisorOption">
                     <% for (var i=0; i< afdelings.length; i++) { %>
@@ -28,7 +28,7 @@
 
                 <div id="opretMødeContainer">
                     <h3>Indtast dine oplysninger</h3>
-                    <form id="opretMødeForm" action="/revisor/moede" method="POST">
+
                         <label for="kundenavn">Navn:</label><br>
                         <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
 
