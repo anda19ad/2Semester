@@ -3,7 +3,8 @@ var url ='mongodb://localhost/bookingSystemDb';
 const Moede = require ('../Models/møde');
 const Revisor =require('../Models/revisor');
 
-// skal have hjælp af øvelsesvejleder
+// Funktion der gør det muligt at slette et enkelt møde ad gangen
+//
 exports.delete_moede = async function (req,res){
     console.log(req.body);
     Moede.findOneAndDelete({'_id': req.params.id}, async function (err, moede){
@@ -12,4 +13,3 @@ exports.delete_moede = async function (req,res){
         res.redirect('/revisorprofil');
     });
 };
-//få hjælp til at automatisk at slette møder efter oversatået dato
