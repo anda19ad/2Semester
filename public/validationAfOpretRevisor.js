@@ -88,9 +88,7 @@ function kontrolInfo() {
        /* Her påkaldes den besked som skal dukke op, ved korrekt udfyldelse
        saveToDB er en reference til den lokale database som er oprettet i funktionen nedenunder */
         if(inputCorrect) {
-            saveToDB();
             alert("Revisor oprettet");
-            location.replace("revisorProfil.ejs")
         }
 
     }
