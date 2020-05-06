@@ -45,32 +45,39 @@ var revisorSchema = new Schema({
 
 // ændret Brugernavn.kodeord til this.kodeord
 
+function encrypt () {
 revisorSchema.pre('save', function (next) {
     const revisor = this;
     bcrypt.hash(revisor.Kodeord, 10, (error, hash) => {
         revisor.Kodeord = hash;
         next()
-    })
-});
+      })
+    });
+};
+
+encrypt();
 
 // laver en anden bcrypt til når du updater fremfor saver.
 // ellers gemmes forrige pswd hash og man kan derfor ikke logge ind med det nye kodeord
 
-revisorSchema.pre("findOneAndUpdate", function(next) {
-    const kodeord = this.getUpdate().Kodeord;
-    if (!kodeord) {
-        return next();
-    }
-    try {
-        const salt = bcrypt.genSaltSync();
-        const hash = bcrypt.hashSync(kodeord, salt);
-        this.getUpdate().Kodeord = hash;
-        next();
-    } catch (error) {
-        return next(error);
-    }
-});
+function updateEncrypt () {
+    revisorSchema.pre("findOneAndUpdate", function (next) {
+        const kodeord = this.getUpdate().Kodeord;
+        if (!kodeord) {
+            return next();
+        }
+        try {
+            const salt = bcrypt.genSaltSync();
+            const hash = bcrypt.hashSync(kodeord, salt);
+            this.getUpdate().Kodeord = hash;
+            next();
+        } catch (error) {
+            return next(error);
+        }
+    });
+};
 
+updateEncrypt();
 
 
 
