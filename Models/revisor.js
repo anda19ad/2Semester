@@ -81,7 +81,6 @@ updateEncrypt();
 
 
 
-
 //Gør det muligt at gemme revisorer s. 95
 const Revisor = mongoose.model('Revisor',revisorSchema);
 module.exports = Revisor;
